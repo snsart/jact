@@ -1,0 +1,50 @@
+.App {
+  text-align: center;
+  width: 100%;
+  height: 100%;
+}
+
+.frame{
+	border: 1px solid #CCCCCC;
+}
+
+.square{
+	float: left;
+	border: 2px #666666 dotted;
+	margin: -2px;
+	padding: 0;
+	width: 30px;
+	height:20px;
+	transition: background 1s;
+	-moz-transition: background 1s;	/* Firefox 4 */
+	-webkit-transition: background 1s;	/* Safari 和 Chrome */
+	-o-transition: background 1s;
+}
+
+.square-row{
+	clear: both;
+  content: "";
+  display: table;
+}
+
+.portrait{
+	position: absolute;
+}
+
+.portrait-li{
+	list-style: none;
+	margin: 0;
+	padding: 0;
+}
+
+.Transverse-li{
+	list-style: none;
+	float: left;
+}
+
+.Transverse-img{
+	width: 100%;
+	height: 100%;
+}
+
+

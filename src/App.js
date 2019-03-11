@@ -152,7 +152,7 @@ class App extends Component {
 	    return (
 		    <div className="App">
 		      	<div className="frame" style={{width:frameW,height:frameH,padding:"10px"}}>
-		        	<Portrait num={[0,1,2,3,4,5,6,7,8,9,10,11,12]} numRow={numRow} height={h} width={w/2}/>
+		        	<Portrait num={["周一","周二","周三",3,4,5,6,7,8,9,10,11,12]} numRow={numRow} height={h} width={w/2}/>
 		        	<Table marginleft={w/2} numCol={numCol} numRow={numRow} height={h} width={w} colors={colors}/>
 		        	<Transverse height={w} width={w} numCol={numCol} imgs={imgs} marginleft={w/2} onClick={(i)=>this.handleClick(i)}/>
 		        </div>

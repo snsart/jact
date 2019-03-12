@@ -34,7 +34,6 @@ class SquareRow extends React.Component{
 }
 
 class Table extends React.Component{
-	
 	render(){
 		const tables=[];
 		for(let i=0;i<this.props.numRow;i++){

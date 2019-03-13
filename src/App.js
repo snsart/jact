@@ -17,8 +17,18 @@ function changeColor(state=appState,action){
 	switch(action.type){
 		case "type_1":
 			state.colors[action.row][1]=1;
-			console.log(action.row);
-			console.log(state);
+			return state;
+			break;
+		case "type_2":
+			state.colors[action.row][3]=2;
+			return state;
+			break;
+		case "type_3":
+			state.colors[action.row][5]=3;
+			return state;
+			break;
+		case "type_4":
+			state.colors[action.row][7]=4;
 			return state;
 			break;
 		default:
@@ -130,9 +140,9 @@ class App extends Component {
 	
 	constructor(props){
 		super(props);
-		let that=this;
+		let render=this.props.render;
 		store.subscribe(function(){
-			that.render();
+			render();
 		})
 	}
 
@@ -171,13 +181,31 @@ class App extends Component {
 				})()
 				break;
 			case 3:
-				store.dispatch({type:"type_3"});
+				(function aa(){
+					if(row<that.props.numRow+fillNum[1]-1){
+						setTimeout(aa,100);
+					}
+					store.dispatch({type:"type_2",row:row-fillNum[1]});
+					row++;
+				})()
 				break;
 			case 5:
-				store.dispatch({type:"type_5"});
+				(function aa(){
+					if(row<that.props.numRow+fillNum[2]-1){
+						setTimeout(aa,100);
+					}
+					store.dispatch({type:"type_3",row:row-fillNum[2]});
+					row++;
+				})()
 				break;
 			case 7:
-				store.dispatch({type:"type_7"});
+				(function aa(){
+					if(row<that.props.numRow+fillNum[3]-1){
+						setTimeout(aa,100);
+					}
+					store.dispatch({type:"type_4",row:row-fillNum[3]});
+					row++;
+				})()
 				break;
 		}
 	}

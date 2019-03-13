@@ -5,10 +5,45 @@ import  a2 from './imgs/a2.png';
 import  a3 from './imgs/a3.png';
 import  a4 from './imgs/a4.png';
 
+import { createStore } from 'redux';
+
+let appState={
+	colors:createArray(12,7),
+}
+let store=createStore(changeColor);
+
+function changeColor(state=appState,action){
+	
+	switch(action.type){
+		case "type_1":
+			state.colors[action.row][1]=1;
+			console.log(action.row);
+			console.log(state);
+			return state;
+			break;
+		default:
+			return state;
+			break;
+	}
+}
+
+function createArray(row,col){
+	let arr=[];
+	for(let i=0;i<row;i++){
+		let innerArr=[];
+		for(let j=0;j<col;j++){
+			innerArr.push(0);
+		}
+		arr.push(innerArr);
+	}
+	return arr;
+}
+
+
 class Square extends React.Component{
 	
 	render(){
-		const colors=["#ffffff","#D81803","#F7740D","#75D74D","#10A8FF"]
+		const colors=["#ffffff","#D81803","#F7740D","#75D74D","#10A8FF"];
 		const color=colors[this.props.color];
 		
 		return(
@@ -95,25 +130,13 @@ class App extends Component {
 	
 	constructor(props){
 		super(props);
-		this.state={
-			colors:this.createArray(this.props.numRow,this.props.numCol),
-		}
-		
+		let that=this;
+		store.subscribe(function(){
+			that.render();
+		})
 	}
-	
-	createArray(row,col){
-		let arr=[];
-		for(let i=0;i<row;i++){
-			let innerArr=[];
-			for(let j=0;j<col;j++){
-				innerArr.push(0);
-			}
-			arr.push(innerArr);
-		}
-		return arr;
-	}
-	
-	handleClick(i){
+
+	/*handleClick(i){
 		let fillNum=[4,11,7,5];
 		let fillColor=[1,2,3,4];
 		
@@ -131,13 +154,39 @@ class App extends Component {
 			})
 			row++;
 		})()
+	}*/
+	
+	handleClick(i){
+		let fillNum=[4,11,7,5];
+		let row=this.props.numRow;
+		let that=this;
+		switch(i){
+			case 1:
+				(function aa(){
+					if(row<that.props.numRow+fillNum[0]-1){
+						setTimeout(aa,100);
+					}
+					store.dispatch({type:"type_1",row:row-fillNum[0]});
+					row++;
+				})()
+				break;
+			case 3:
+				store.dispatch({type:"type_3"});
+				break;
+			case 5:
+				store.dispatch({type:"type_5"});
+				break;
+			case 7:
+				store.dispatch({type:"type_7"});
+				break;
+		}
 	}
-
+	
 	render() {
 	  	
 	  	const frameH=768;
 	  	const frameW=1024;
-	  	const colors=this.state.colors;
+	  	const colors=store.getState().colors;
 	  	
 	  	const totalH=frameH;
 	  	const totalW=frameW;

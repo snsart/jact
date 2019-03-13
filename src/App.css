@@ -10,8 +10,8 @@
 
 .square{
 	float: left;
-	border: 2px #666666 dotted;
-	margin: -2px;
+	border: 1px #666666 solid;
+	margin: -1px;
 	padding: 0;
 	width: 30px;
 	height:20px;

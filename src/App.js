@@ -1,54 +1,5 @@
 import React, { Component } from 'react';
 import './App.css';
-import  a1 from './imgs/a1.png';
-import  a2 from './imgs/a2.png';
-import  a3 from './imgs/a3.png';
-import  a4 from './imgs/a4.png';
-
-import { createStore } from 'redux';
-
-let appState={
-	colors:createArray(12,7),
-}
-let store=createStore(changeColor);
-
-function changeColor(state=appState,action){
-	
-	switch(action.type){
-		case "type_1":
-			state.colors[action.row][1]=1;
-			return state;
-			break;
-		case "type_2":
-			state.colors[action.row][3]=2;
-			return state;
-			break;
-		case "type_3":
-			state.colors[action.row][5]=3;
-			return state;
-			break;
-		case "type_4":
-			state.colors[action.row][7]=4;
-			return state;
-			break;
-		default:
-			return state;
-			break;
-	}
-}
-
-function createArray(row,col){
-	let arr=[];
-	for(let i=0;i<row;i++){
-		let innerArr=[];
-		for(let j=0;j<col;j++){
-			innerArr.push(0);
-		}
-		arr.push(innerArr);
-	}
-	return arr;
-}
-
 
 class Square extends React.Component{
 	
@@ -137,43 +88,19 @@ class Transverse extends React.Component{
 
 
 class App extends Component {
-	
-	constructor(props){
-		super(props);
-		let render=this.props.render;
-		store.subscribe(function(){
-			render();
-		})
-	}
 
-	/*handleClick(i){
-		let fillNum=[4,11,7,5];
-		let fillColor=[1,2,3,4];
-		
-		let newColors=this.state.colors.slice();
-	
-		let row=this.props.numRow-fillNum[(i-1)/2];
-		let that=this;
-		(function aa(){
-			newColors[row][i]=fillColor[(i-1)/2];
-			if(row<that.props.numRow-1){
-				setTimeout(aa,100);
-			}
-			that.setState({
-				colors:newColors
-			})
-			row++;
-		})()
-	}*/
 	
 	handleClick(i){
-		let fillNum=[4,11,7,5];
-		let row=this.props.numRow;
-		let that=this;
+		let store=this.props.store;
+	  	let state=store.getState();
+	  	
+		let fillNum=state.data_num;
+		let row=state.numRow;
+		
 		switch(i){
 			case 1:
 				(function aa(){
-					if(row<that.props.numRow+fillNum[0]-1){
+					if(row<state.numRow+fillNum[0]-1){
 						setTimeout(aa,100);
 					}
 					store.dispatch({type:"type_1",row:row-fillNum[0]});
@@ -182,7 +109,7 @@ class App extends Component {
 				break;
 			case 3:
 				(function aa(){
-					if(row<that.props.numRow+fillNum[1]-1){
+					if(row<state.numRow+fillNum[1]-1){
 						setTimeout(aa,100);
 					}
 					store.dispatch({type:"type_2",row:row-fillNum[1]});
@@ -191,7 +118,7 @@ class App extends Component {
 				break;
 			case 5:
 				(function aa(){
-					if(row<that.props.numRow+fillNum[2]-1){
+					if(row<state.numRow+fillNum[2]-1){
 						setTimeout(aa,100);
 					}
 					store.dispatch({type:"type_3",row:row-fillNum[2]});
@@ -200,35 +127,37 @@ class App extends Component {
 				break;
 			case 7:
 				(function aa(){
-					if(row<that.props.numRow+fillNum[3]-1){
+					if(row<state.numRow+fillNum[3]-1){
 						setTimeout(aa,100);
 					}
 					store.dispatch({type:"type_4",row:row-fillNum[3]});
 					row++;
 				})()
 				break;
+			default:
+				return;
 		}
 	}
 	
 	render() {
+	  	let store=this.props.store;
+	  	let state=store.getState();
 	  	
-	  	const frameH=768;
-	  	const frameW=1024;
-	  	const colors=store.getState().colors;
+	  	const frameH=state.height;
+	  	const frameW=state.width;
+	  	const colors=state.colors;
 	  	
-	  	const totalH=frameH;
-	  	const totalW=frameW;
-	  	const numRow=this.props.numRow;
-	  	const numCol=this.props.numCol;
+	  	const numRow=state.numRow;
+	  	const numCol=state.numCol;
 	  	
-	  	const w=totalW/(numCol+1);
-	  	const h=(2*totalH-2*w)/(1+2*numRow);
+	  	const w=frameW/(numCol+1);
+	  	const h=(2*frameH-2*w)/(1+2*numRow);
 	  	
-	  	const imgs=[a1,a2,a3,a4];
+	  	const imgs=state.data_x;
 	    return (
 		    <div className="App">
 		      	<div className="frame" style={{width:frameW,height:frameH,padding:"10px"}}>
-		        	<Portrait num={[0,1,2,3,4,5,6,7,8,9,10,11,12]} numRow={numRow} height={h} width={w/2}/>
+		        	<Portrait num={state.data_y} numRow={numRow} height={h} width={w/2}/>
 		        	<Table marginleft={w/2} numCol={numCol} numRow={numRow} height={h} width={w} colors={colors}/>
 		        	<Transverse height={w} width={w} numCol={numCol} imgs={imgs} marginleft={w/2} onClick={(i)=>this.handleClick(i)}/>
 		        </div>
@@ -236,7 +165,5 @@ class App extends Component {
 	    );
 	}
 }
-/*<Transverse height={"80px"} width={"80px"} imgs={imgs}/>*/
-/*<Portrait num={[0,1,2,3,4,5,6,7,8,9,10]} height={h}/>*/
 
 export default App;

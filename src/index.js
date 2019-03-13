@@ -41,8 +41,6 @@ function changeColor(state=new State(),action){
 	}
 }
 
-let store=createStore(changeColor);
-
 function createArray(row,col){
 	let arr=[];
 	for(let i=0;i<row;i++){
@@ -54,6 +52,8 @@ function createArray(row,col){
 	}
 	return arr;
 }
+
+let store=createStore(changeColor);
 
 function render(){
 	ReactDOM.render(<App numRow={12} numCol={9}  store={store}/>, document.getElementById('root'));

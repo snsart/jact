@@ -2,7 +2,6 @@ import React, { Component } from 'react';
 import './App.css';
 
 class Square extends React.Component{
-	
 	render(){
 		const colors=["#ffffff","#D81803","#F7740D","#75D74D","#10A8FF"];
 		const color=colors[this.props.color];
@@ -89,54 +88,38 @@ class Transverse extends React.Component{
 
 class App extends Component {
 
-	
 	handleClick(i){
 		let store=this.props.store;
-	  	let state=store.getState();
-	  	
+	  	let state=store.getState();  	
 		let fillNum=state.data_num;
-		let row=state.numRow;
-		
 		switch(i){
 			case 1:
-				(function aa(){
-					if(row<state.numRow+fillNum[0]-1){
-						setTimeout(aa,100);
-					}
-					store.dispatch({type:"type_1",row:row-fillNum[0]});
-					row++;
-				})()
+				this.dispatch("type_1",fillNum[0],state.numRow);
 				break;
 			case 3:
-				(function aa(){
-					if(row<state.numRow+fillNum[1]-1){
-						setTimeout(aa,100);
-					}
-					store.dispatch({type:"type_2",row:row-fillNum[1]});
-					row++;
-				})()
+				this.dispatch("type_2",fillNum[1],state.numRow);
 				break;
 			case 5:
-				(function aa(){
-					if(row<state.numRow+fillNum[2]-1){
-						setTimeout(aa,100);
-					}
-					store.dispatch({type:"type_3",row:row-fillNum[2]});
-					row++;
-				})()
+				this.dispatch("type_3",fillNum[2],state.numRow);
 				break;
 			case 7:
-				(function aa(){
-					if(row<state.numRow+fillNum[3]-1){
-						setTimeout(aa,100);
-					}
-					store.dispatch({type:"type_4",row:row-fillNum[3]});
-					row++;
-				})()
+				this.dispatch("type_4",fillNum[3],state.numRow);
 				break;
 			default:
 				return;
 		}
+	}
+	
+	dispatch(type,fillNum,numRow){
+		let store=this.props.store;
+		let row=numRow-fillNum;
+		(function callback(){
+			if(row<numRow-1){
+				setTimeout(callback,100);
+			}
+			store.dispatch({type:type,row:row});
+			row++;
+		})()
 	}
 	
 	render() {

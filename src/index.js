@@ -10,35 +10,56 @@ import  a3 from './imgs/a3.png';
 import  a4 from './imgs/a4.png';
 
 import { createStore } from 'redux';
+import { Provider } from 'react-redux';
 
 function State(){
 	this.numRow=12;
 	this.numCol=9;
 	this.data_x=[a1,a2,a3,a4];
-	this.data_y=[10,20,30,40,50,60,70,80,90,100,110,120,130];
+	this.data_y=[0,1,2,3,4,5,6,7,8,9,10,11,12];
 	this.data_num=[4,11,7,5];
 	this.colors=createArray(this.numRow,this.numCol);
 	this.width=800;
 	this.height=500;
 }
 
+//reducer
 function changeColor(state=new State(),action){
+	let newColors=copy(state.colors);
+	let newState;
 	switch(action.type){
 		case "type_1":
-			state.colors[action.row][1]=1;
-			return state;
+			newColors[action.row][1]=1;
+			newState={...state,colors:newColors};
+			return newState;
 		case "type_2":
-			state.colors[action.row][3]=2;
-			return state;
+			newColors[action.row][3]=2;
+			newState={...state,colors:newColors};
+			return newState;
 		case "type_3":
-			state.colors[action.row][5]=3;
-			return state;
+			newColors[action.row][5]=3;
+			newState={...state,colors:newColors};
+			return newState;
 		case "type_4":
-			state.colors[action.row][7]=4;
-			return state;
+			newColors[action.row][7]=1;
+			newState={...state,colors:newColors};
+			return newState;
 		default:
 			return state;
 	}
+}
+
+//深拷贝二维数组
+function copy(arr){
+	let newArr=[];
+	for(let i=0,len=arr.length;i<len;i++){
+		let innerArr=[];
+		for(let j=0;j<arr[i].length;j++){
+			innerArr.push(arr[i][j]);
+		}
+		newArr.push(innerArr);
+	}
+	return newArr;
 }
 
 function createArray(row,col){
@@ -55,15 +76,12 @@ function createArray(row,col){
 
 let store=createStore(changeColor);
 
-function render(){
-	ReactDOM.render(<App numRow={12} numCol={9}  store={store}/>, document.getElementById('root'));
-}
-render();
 
-store.subscribe(function(){
-	render();
-})
-// If you want your app to work offline and load faster, you can change
-// unregister() to register() below. Note this comes with some pitfalls.
-// Learn more about service workers: http://bit.ly/CRA-PWA
+ReactDOM.render(
+	<Provider store={store}>
+		<App/>
+	</Provider>,
+	document.getElementById('root')
+);
+
 serviceWorker.unregister();

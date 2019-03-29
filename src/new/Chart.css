@@ -1,0 +1,219 @@
+.frame{
+	position: relative;
+	border: 1px solid #CCCCCC;
+	padding: 50px 10px 10px 10px;
+	text-align: center;
+	margin: 0 auto;
+	background: #FFFFFF;
+}
+
+.innerFrame{
+	position: position;
+	background: #FFFFFF;
+	padding: 1px;/*防止margin折叠问题*/
+	width: 100%;
+	height: 100%;
+	background: #dddddd;
+}
+
+.contRight{
+	position: relative;
+	width: 100%;
+	height: 100%;
+	/*background-color: #F1EBE4;*/
+	border-bottom: solid 2px #000000;
+	border-left: solid 2px #000000;
+}
+
+.table{
+	position: absolute;
+}
+
+.square{
+	/*position: relative;*/
+	float: left;
+	border: 1px #222222 solid;
+	margin: -1px;
+	min-height: 100%;
+	padding: 0;
+	transition: background 0.5s;
+	-moz-transition: background 0.5s;	/* Firefox 4 */
+	-webkit-transition: background 0.5s;	/* Safari 和 Chrome */
+	-o-transition: background 0.5s;
+}
+
+.fill-square{
+	border: none;
+	margin: 0px;
+}
+
+.back-square{
+	border: 1px #222222 solid;
+	margin: -1px;
+}
+
+.square-row{
+  	width: 88%;
+}
+
+.portraitWrap{
+	position:absolute;
+}
+
+.portrait{
+	position: absolute;
+	margin: 0;
+	padding: 0;
+}
+
+.portrait-li{
+	list-style: none;
+	text-align: center;
+	font-family: "arial black";
+	font-weight: 600;
+	font-size: 18px;
+	font-family: "微软雅黑";
+	margin: 0;
+	padding: 0;
+}
+.portrait-li.filldata{
+	cursor: pointer;
+}
+
+.Transverse-li{
+	white-space: normal;
+	word-break: keep-all;
+	list-style: none;
+	float: left;
+	height: 100%;
+	text-align: center;
+	padding-top: 5px;
+	font-size: 20px;
+	font-family: "微软雅黑";
+	font-weight: 600;
+}
+.Transverse-li.filldata{
+	cursor: pointer;
+}
+
+.Transverse-img{
+	width: 100%;
+	height: 100%;
+}
+
+.arrow{
+	position: absolute;
+	width: 16px;
+	height: 16px;
+	background-image: url(imgs/arrow.svg);
+	background-position: center center;
+	background-repeat:no-repeat ;
+	background-size:cover ;
+}
+
+.arr-y{
+	left: -9px;
+	top: -5px;
+	transform:rotate(-90deg);
+}
+
+.arr-x{
+	right: -5px;
+	bottom: -9px;
+}
+
+.tips-y{
+	position: absolute;
+	left: 10px;
+	top:20px;
+}
+
+.tips-x{
+	position: absolute;
+	right: 15px;
+	bottom:-30px;
+}
+
+.title{
+	position: absolute;
+	width: 100%;
+	margin-top: -40px;
+	padding: 0;
+	text-align: center;
+	font-size: 23px;
+	color: #282C34;
+}
+
+/*提示框组件*/
+.tip{
+	padding: 5px;
+	border: 1px solid #222222;
+	cursor: pointer;
+}
+
+.tip-img{
+	position: absolute;
+	width: 40px;
+	height: 20px;
+	float: left;
+	background-position: center center;
+	background-repeat:no-repeat ;
+	background-size:cover ;
+}
+
+.tip-img.right{
+	background-image: url(imgs/right.svg);
+}
+
+.tip-img.wrong{
+	background-image: url(imgs/wrong.svg);
+}
+
+.tip-txt{
+	margin-left: 50px;
+	height: 20px;
+	line-height: 20px;
+	font-family: "微软雅黑";
+	font-size: 15px;
+	font-weight:600;
+}
+
+.tipsWrap1{
+	position: absolute;
+	right: 200px;
+	top: 40px;
+}
+.tipsWrap2{
+	position: absolute;
+	right: 80px;
+	top: 40px;
+}
+.tip.selected{
+	border: 2px solid #ff0000;
+}
+
+/*canvas*/
+.canvas{
+	position: absolute;
+	left: 0;
+}
+
+.update{
+	position:absolute;
+	width: 30px;
+	height: 30px;
+	background-image: url(imgs/update.svg);
+	background-position: center center;
+	background-repeat:no-repeat ;
+	background-size:cover ;
+	
+}
+
+.updateWrap{
+	position: absolute;
+	cursor: pointer;
+	right: 40px;
+	top:10px;
+}
+
+

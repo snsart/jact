@@ -67,9 +67,17 @@
 	font-size: 30px;
 }
 
-.Rating .RatingON{
-	color: #FF0000;
-	
+.RatingON{
+	position: relative;
+}
+
+.star{
+	display: none;
+	float: left;
+}
+
+.RatingON .star{
+	display: inline-block;
 }
 .Suggest{
 

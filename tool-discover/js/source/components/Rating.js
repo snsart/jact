@@ -55,6 +55,7 @@ class Rating extends Component{
 				onMouseOver={!this.props.readonly?this.setTemp.bind(this,i):undefined}
 				>
 				&#9734;
+				<span className='star'>&#9733;</span>
 			</span>)
 		}
 		

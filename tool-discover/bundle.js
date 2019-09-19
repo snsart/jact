@@ -724,7 +724,12 @@ var Rating = function (_Component) {
 						onClick: !this.props.readonly ? this.setRating.bind(this, i) : undefined,
 						onMouseOver: !this.props.readonly ? this.setTemp.bind(this, i) : undefined
 					},
-					'\u2606'
+					'\u2606',
+					_react2.default.createElement(
+						'span',
+						{ className: 'star' },
+						'\u2605'
+					)
 				));
 			}
 

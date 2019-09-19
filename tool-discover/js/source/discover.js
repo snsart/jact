@@ -48,7 +48,7 @@ ReactDOM.render(
 		</div>
 		<div>
 			Initial value 4:
-			<Rating defaultValue={4}/>		
+			<Rating defaultValue={4} max={10}/>		
 		</div>
 		<div>
 			This one goes to 11:

@@ -54,8 +54,8 @@ class Rating extends Component{
 				onClick={!this.props.readonly?this.setRating.bind(this,i):undefined}
 				onMouseOver={!this.props.readonly?this.setTemp.bind(this,i):undefined}
 				>
-				&#9734;
-				<span className='star'>&#9733;</span>
+				<span className="bottom-star">&#9734;</span>
+				<span className="top-star">&#9733;</span>
 			</span>)
 		}
 		

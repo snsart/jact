@@ -112,7 +112,7 @@ _reactDom2.default.render(_react2.default.createElement(
 		'div',
 		null,
 		'Initial value 4:',
-		_react2.default.createElement(_Rating2.default, { defaultValue: 4 })
+		_react2.default.createElement(_Rating2.default, { defaultValue: 4, max: 10 })
 	),
 	_react2.default.createElement(
 		'div',

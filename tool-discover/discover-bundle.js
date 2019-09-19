@@ -724,10 +724,14 @@ var Rating = function (_Component) {
 						onClick: !this.props.readonly ? this.setRating.bind(this, i) : undefined,
 						onMouseOver: !this.props.readonly ? this.setTemp.bind(this, i) : undefined
 					},
-					'\u2606',
 					_react2.default.createElement(
 						'span',
-						{ className: 'star' },
+						{ className: 'bottom-star' },
+						'\u2606'
+					),
+					_react2.default.createElement(
+						'span',
+						{ className: 'top-star' },
 						'\u2605'
 					)
 				));
@@ -953,7 +957,7 @@ _reactDom2.default.render(_react2.default.createElement(
 		'div',
 		null,
 		'Initial value 4:',
-		_react2.default.createElement(_Rating2.default, { defaultValue: 4 })
+		_react2.default.createElement(_Rating2.default, { defaultValue: 4, max: 10 })
 	),
 	_react2.default.createElement(
 		'div',

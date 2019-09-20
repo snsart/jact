@@ -106,7 +106,7 @@ var Form = function (_Component) {
 	return Form;
 }(_react.Component);
 
-_FormInput2.default.propTypes = {
+Form.propTypes = {
 
 	fields: _propTypes.PropTypes.arrayOf(_propTypes.PropTypes.shape({
 		id: _propTypes.PropTypes.string.isRequired,

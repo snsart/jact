@@ -137,3 +137,43 @@
 ![forminput](imgs/forminput.png)
 
 
+# Form
+
+#### 【属性】
+
+|属性|类型|说明|
+|---|---|---|
+|fields|[{id:string(requied),label:string(requied),type:string,options:[string]}]|配置数据|
+|initialData|{id:value}|默认值，id对应表单项目的id|
+|readonly|bool|为Rating类型组件设置只读属性|
+
+#### 【方法】
+
+|方法|说明|
+|---|---|
+|getValue()|获取Form表单的值，返回一个data对象，data[id]存储对应id表单的值|
+
+#### 【应用举例】
+
+```
+<Form	
+	fields={[
+		{
+			label:'Rating',type:'rating',id:'rateme'
+		},
+		{
+			label:'Greetings',id:'freetext'
+		}
+	]}
+	
+	initialData={{
+		rateme:4,freetext:'Hello'
+	}}
+/>
+```
+
+#### 【示意图】
+
+![form](imgs/form.png)
+
+

@@ -52,7 +52,7 @@ class Form extends Component{
 	}
 }
 
-FormInput.propTypes={
+Form.propTypes={
 	
 	fields:PropTypes.arrayOf(PropTypes.shape({
 		id:PropTypes.string.isRequired,

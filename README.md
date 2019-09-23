@@ -177,3 +177,34 @@
 ![form](imgs/form.png)
 
 
+# Dialog
+
+#### 【属性】
+
+|属性|类型|说明|
+|---|---|---|
+|header|string|对话框标题|
+|confirmLabel|string|确定按钮的标签内容|
+|modal|bool|是否显示遮罩|
+|onAction|func|点击取消或确定按钮时的回调函数,参数值为dismiss说明点击的是取消，参数值为confirm说明点击的是确定|
+|hasCancel|bool|是否显示取消按钮|
+
+
+#### 【应用举例】
+
+```
+<Dialog
+	header="out-of-the-box example"
+	hasCancel={true}
+	onAction={type=>alert(type)}
+>
+	Hello,dialog!
+</Dialog>
+```
+
+#### 【示意图】
+
+（暂无）
+
+
+

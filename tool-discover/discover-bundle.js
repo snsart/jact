@@ -1102,6 +1102,7 @@ _reactDom2.default.render(_react2.default.createElement(
 		_Dialog2.default,
 		{
 			header: 'out-of-the-box example',
+			hasCancel: true,
 			onAction: function onAction(type) {
 				return alert(type);
 			}
@@ -1112,7 +1113,7 @@ _reactDom2.default.render(_react2.default.createElement(
 		_Dialog2.default,
 		{
 			header: 'No cancel,custom button',
-			hasCancel: false,
+			hasCancel: true,
 			confirmLabel: 'whatever',
 			onAction: function onAction(type) {
 				return alert(type);

@@ -44,7 +44,7 @@
 	font-size: 30px;
 	font-weight: bold;
 	color: #FFFFFF;
-	background-color: #6f001b;
+	background-color: #3366CC;
 	padding: 10px 20px;
 }
 
@@ -58,6 +58,8 @@
 	padding: 10px 25px;
 	background-color: #cccccc;
 }
+
+
 
 .Rating{
 	cursor: pointer;

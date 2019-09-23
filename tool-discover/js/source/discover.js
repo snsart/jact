@@ -120,6 +120,7 @@ ReactDOM.render(
 		
 		<Dialog
 			header="out-of-the-box example"
+			hasCancel={true}
 			onAction={type=>alert(type)}
 		>
 			Hello,dialog!
@@ -127,7 +128,7 @@ ReactDOM.render(
 		
 		<Dialog
 			header="No cancel,custom button"
-			hasCancel={false}
+			hasCancel={true}
 			confirmLabel="whatever"
 			onAction={type=>alert(type)}
 		>
